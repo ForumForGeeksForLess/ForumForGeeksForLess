@@ -1,4 +1,5 @@
 ﻿using ForumForGeeksForLess.Models;
+using ForumForGeeksForLess.Models.DBModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,6 +16,7 @@ namespace ForumForGeeksForLess
         protected void Application_Start()
         {
             Database.SetInitializer<ApplicationDbContext>(new AppDbInitializer());
+            Database.SetInitializer<ForumForGeeksForLessBD>(new DataLevelDbInitializer());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

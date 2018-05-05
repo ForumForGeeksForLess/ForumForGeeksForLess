@@ -53,6 +53,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -192,17 +194,30 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\sectionForumsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
+    <Compile Include="Models\DBModel\DataLevelDbInitializer.cs" />
+    <Compile Include="Models\DBModel\ForumForGeeksForLessBD.cs" />
+    <Compile Include="Models\DBModel\messageInTheTopic.cs" />
+    <Compile Include="Models\DBModel\ratingList.cs" />
+    <Compile Include="Models\DBModel\sectionForum.cs" />
+    <Compile Include="Models\DBModel\subsectionForum.cs" />
+    <Compile Include="Models\DBModel\topicInTheForum.cs" />
+    <Compile Include="Models\DBModel\visitList.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ForumForGeeksForLessDB.mdf" />
+    <Content Include="App_Data\ForumForGeeksForLessDB_log.ldf">
+      <DependentUpon>ForumForGeeksForLessDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -260,10 +275,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmailNext.cshtml" />
+    <Content Include="Views\sectionForums\Create.cshtml" />
+    <Content Include="Views\sectionForums\Delete.cshtml" />
+    <Content Include="Views\sectionForums\Details.cshtml" />
+    <Content Include="Views\sectionForums\Edit.cshtml" />
+    <Content Include="Views\sectionForums\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
