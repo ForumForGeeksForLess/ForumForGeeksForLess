@@ -21,7 +21,7 @@ namespace ForumForGeeksForLess.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("ForumForGeeksForLessCon", throwIfV1Schema: false)
+            : base("ForumForGeeksForLessBD", throwIfV1Schema: false)
         {
         }
 

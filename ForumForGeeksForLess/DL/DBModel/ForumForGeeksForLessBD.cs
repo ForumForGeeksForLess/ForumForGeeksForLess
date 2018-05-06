@@ -11,6 +11,9 @@ namespace ForumForGeeksForLess.Models.DBModel
             : base("name=ForumForGeeksForLessBD")
         {
         }
+        public ForumForGeeksForLessBD(string connectionString)
+            : base(connectionString)
+        { }
 
         public virtual DbSet<messageInTheTopic> messageInTheTopic { get; set; }
         public virtual DbSet<ratingList> ratingList { get; set; }

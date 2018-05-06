@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace ForumForGeeksForLess.Models
 {
-    public class AppDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class AppDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         //DropCreateDatabaseAlways
         //CreateDatabaseIfNotExists

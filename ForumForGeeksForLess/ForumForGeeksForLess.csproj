@@ -195,19 +195,28 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\sectionForumsController.cs" />
+    <Compile Include="DL\Interfaces\IRepository.cs" />
+    <Compile Include="DL\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="DL\Repositories\EFUnitOfWork.cs" />
+    <Compile Include="DL\Repositories\messageInTheTopicRepository.cs" />
+    <Compile Include="DL\Repositories\ratingListRepository.cs" />
+    <Compile Include="DL\Repositories\sectionForumRepository.cs" />
+    <Compile Include="DL\Repositories\subsectionForumRepository.cs" />
+    <Compile Include="DL\Repositories\topicInTheForumRepository.cs" />
+    <Compile Include="DL\Repositories\visitListRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
-    <Compile Include="Models\DBModel\DataLevelDbInitializer.cs" />
-    <Compile Include="Models\DBModel\ForumForGeeksForLessBD.cs" />
-    <Compile Include="Models\DBModel\messageInTheTopic.cs" />
-    <Compile Include="Models\DBModel\ratingList.cs" />
-    <Compile Include="Models\DBModel\sectionForum.cs" />
-    <Compile Include="Models\DBModel\subsectionForum.cs" />
-    <Compile Include="Models\DBModel\topicInTheForum.cs" />
-    <Compile Include="Models\DBModel\visitList.cs" />
+    <Compile Include="DL\DBModel\DataLevelDbInitializer.cs" />
+    <Compile Include="DL\DBModel\ForumForGeeksForLessBD.cs" />
+    <Compile Include="DL\DBModel\messageInTheTopic.cs" />
+    <Compile Include="DL\DBModel\ratingList.cs" />
+    <Compile Include="DL\DBModel\sectionForum.cs" />
+    <Compile Include="DL\DBModel\subsectionForum.cs" />
+    <Compile Include="DL\DBModel\topicInTheForum.cs" />
+    <Compile Include="DL\DBModel\visitList.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
