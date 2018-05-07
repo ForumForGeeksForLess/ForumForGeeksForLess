@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using ForumForGeeksForLess.BL.interfaceDTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +10,30 @@ namespace ForumForGeeksForLess.Controllers
 {
     public class HomeController : Controller
     {
+        IRepositoryBL forumService;
+        public HomeController(IRepositoryBL serv)
+        {
+            forumService = serv;
+        }
+
         public ActionResult Index()
         {
+
+            var el = forumService.GetAllSectionAndSub();
+
+
+
+
+
+
             return View();
         }
 
-        public ActionResult About()
+        protected override void Dispose(bool disposing)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            forumService.Dispose();
+            base.Dispose(disposing);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

@@ -15,14 +15,14 @@ namespace ForumForGeeksForLess.DL.Repositories
             this.db = context;
         }
 
-        public async Task<IEnumerable<subsectionForum>> GetAll()
+        public IEnumerable<subsectionForum> GetAll()
         {
-            return await db.subsectionForum.ToListAsync();
+            return  db.subsectionForum;
         }
 
-        public async Task<subsectionForum> Get(int id)
+        public subsectionForum Get(int id)
         {
-            return await db.subsectionForum.FindAsync(id);
+            return  db.subsectionForum.Find(id);
         }
 
         public void Create(subsectionForum item)

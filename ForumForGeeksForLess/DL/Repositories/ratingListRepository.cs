@@ -15,14 +15,14 @@ namespace ForumForGeeksForLess.DL.Repositories
             this.db = context;
         }
 
-        public async Task<IEnumerable<ratingList>> GetAll()
+        public IEnumerable<ratingList> GetAll()
         {
-            return await db.ratingList.ToListAsync();
+            return db.ratingList;
         }
 
-        public async Task<ratingList> Get(int id)
+        public  ratingList Get(int id)
         {
-            return await db.ratingList.FindAsync(id);
+            return  db.ratingList.Find(id);
         }
 
         public void Create(ratingList item)

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ForumForGeeksForLess.DL.Repositories
 {
-    public class EFUnitOfWork: IUnitOfWork
+    public class EFUnitOfWork: IUnitOfWork, IDisposable
     {
 
         private ForumForGeeksForLessBD db;
@@ -20,7 +20,7 @@ namespace ForumForGeeksForLess.DL.Repositories
         private topicInTheForumRepository TopicInTheForumRepository;
         private visitListRepository VisitListRepository;
       
-        public EFUnitOfWork(string connectionString)
+        public EFUnitOfWork()
         {
             db = new ForumForGeeksForLessBD();
             //db = new ForumForGeeksForLessBD(connectionString);
@@ -46,7 +46,6 @@ namespace ForumForGeeksForLess.DL.Repositories
             }
         }
 
-
         public IRepository<sectionForum> SectionsForum
         {
             get
@@ -56,7 +55,6 @@ namespace ForumForGeeksForLess.DL.Repositories
                 return SectionForumRepository;
             }
         }
-
 
         public IRepository<subsectionForum> SubsectionsForum
         {

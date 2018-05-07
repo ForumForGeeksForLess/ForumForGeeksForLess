@@ -9,7 +9,7 @@ namespace ForumForGeeksForLess.Models.DBModel
     [Table("ratingList")]
     public partial class ratingList
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [Required]

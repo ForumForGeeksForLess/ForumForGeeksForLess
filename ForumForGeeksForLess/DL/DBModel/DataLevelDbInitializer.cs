@@ -9,35 +9,21 @@ namespace ForumForGeeksForLess.Models.DBModel
     public class DataLevelDbInitializer : CreateDatabaseIfNotExists<ForumForGeeksForLessBD>
     {
         //DropCreateDatabaseAlways
-        protected override void Seed(ForumForGeeksForLessBD context)
+        protected  override void Seed(ForumForGeeksForLessBD context)
         {
-            context.sectionForum.Add(new sectionForum { Name = "Раздел 1" });
-            context.sectionForum.Add(new sectionForum { Name = "Раздел 2" });
+            sectionForum sF1 = new sectionForum { Name = "Раздел 1" };
+            sectionForum sF2 = new sectionForum { Name = "Раздел 2" };
 
-
-            //context.ConstHoursReport.Add(new ConstHoursReport { starth = new TimeSpan(9, 0, 0), endh = new TimeSpan(18, 0, 0), ten = new TimeSpan(22, 0, 0), min = 50, max = 100, LunchT = new TimeSpan(1, 0, 0) });
-
-            //context.MainMail.Add(new MainMail { mail = "HoursReport@outlook.com", password = "GdcjTgs7hh!b766" });
-
-            //context.ActionM.Add(new ActionM { ActionName = "action" });
-            //context.ActionM.Add(new ActionM { ActionName = "placement" });
-            //context.ActionM.Add(new ActionM { ActionName = "breakout" });
-            //context.ActionM.Add(new ActionM { ActionName = "input rules" });
-            //context.ActionM.Add(new ActionM { ActionName = "silk" });
-            //context.ActionM.Add(new ActionM { ActionName = "final check" });
-            //context.ActionM.Add(new ActionM { ActionName = "holiday" });
-            //context.ActionM.Add(new ActionM { ActionName = "practice" });
-
-            //context.DesignNumber.Add(new DesignNumber { DesignName = "no design" });
-            //context.DesignNumber.Add(new DesignNumber { DesignName = "Allegro" });
-            //context.DesignNumber.Add(new DesignNumber { DesignName = "MANTA_EVB" });
-            //context.DesignNumber.Add(new DesignNumber { DesignName = "s130610" });
-            //context.DesignNumber.Add(new DesignNumber { DesignName = "s130812" });
-
+            context.sectionForum.Add(sF1);
+            context.sectionForum.Add(sF2);
             context.SaveChanges();
 
-            //если нужно что-то добавить при инициализаии
+            context.subsectionForum.Add(new subsectionForum { idSectionForum = sF1.Id, Name = "Программирование", Notes = "Все вопросы и ответы по языкам программирования и Web-программированию." });
+            context.subsectionForum.Add(new subsectionForum { idSectionForum = sF1.Id, Name = "Ошибки", Notes = "Все замеченные вами ошибки. Как можно подробнее опишите ошибку." });
+            context.subsectionForum.Add(new subsectionForum { idSectionForum = sF2.Id, Name = "Флуд и оффтоп", Notes = "Флуд и оффтоп только здесь!" });
+            context.subsectionForum.Add(new subsectionForum { idSectionForum = sF2.Id, Name = "Интересное", Notes = "Всё интересное, что вы нашли в Интернете." });
 
+            context.SaveChanges();
             base.Seed(context);
         }
 
