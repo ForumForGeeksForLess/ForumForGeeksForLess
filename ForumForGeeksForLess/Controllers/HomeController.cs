@@ -18,16 +18,13 @@ namespace ForumForGeeksForLess.Controllers
 
         public ActionResult Index()
         {
-
-            var el = forumService.GetAllSectionAndSub();
-
-
-
-
-
-
-            return View();
+            if (User.Identity.IsAuthenticated)
+                forumService.SetVisirer(User.Identity.Name);
+             return View(forumService.GetAllSectionAndSub());
         }
+
+
+
 
         protected override void Dispose(bool disposing)
         {

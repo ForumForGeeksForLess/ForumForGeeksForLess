@@ -10,11 +10,8 @@ namespace ForumForGeeksForLess.BL.interfaceDTO
 {
     public interface IRepositoryBL
     {
-
        IndexWebModel GetAllSectionAndSub();
-
-
-
-        void Dispose();
+       void SetVisirer(in string name);
+       void Dispose();
     }
 }

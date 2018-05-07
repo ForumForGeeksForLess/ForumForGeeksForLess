@@ -1,31 +1,89 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model ForumForGeeksForLess.Models.ForumWebModel.IndexWebModel
+
+@{
+    ViewBag.Title = "ForumForGeeksForLess";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@foreach (var el in Model.SectionAndsubsectionForum)
+{
+    <br>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <a class="panel-default" data-toggle="collapse" href="#@el.GetHashCode()" aria-expanded="true">
+                <div class="panel-heading">
+                    <i class="glyphicon glyphicon-folder-open"></i> <strong>@el.Key</strong> <span class="pull-right"><i class="glyphicon glyphicon-resize-full"></i></span>
+                </div>
+            </a>
+            <div id="@el.GetHashCode()" class="panel-collapse collapse in" aria-expanded="true">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="text-center"> @Html.DisplayNameFor(modelItem => el.Value.FirstOrDefault().CountTopics)</th>
+                            <th class="text-center"> @Html.DisplayNameFor(modelItem => el.Value.FirstOrDefault().CountReplies)</th>
+                            <th class="hidden-xs">@Html.DisplayNameFor(modelItem => el.Value.FirstOrDefault().LastMessage)</th>
+                        </tr>
+                    </thead>
+                    @foreach (var sub in el.Value)
+                    {
+                        <tbody>
+                            <tr>
+                                <td class="col-md-6 col-sm-6">
+                                    <div><strong> @Html.ActionLink(@sub.Name, "Index", "viewforum", new { id = @sub.Id }, new { title = @sub.Name })</strong></div>
+                                    <div class="hidden-xs"><em>@sub.Notes</em></div>
+                                </td>
+                                <td class="text-center"><span class="badge">@sub.CountTopics</span></td>
+                                <td class="text-center"><span class="badge">@sub.CountReplies</span></td>
+                                <td class="col-md-4 col-sm-4 hidden-xs">
+                                    <div>
+                                        @*@Html.ActionLink(@sub.LastMessage.lastCaption, "Index", "viewTopic", new { id = @sub.LastMessage.lastId })*@
+
+                                        <a href="http://localhost:49917/viewTopic/Index/" @sub.LastMessage.lastId> @sub.LastMessage.lastCaption. </a><br>
+                                        <i class="glyphicon glyphicon-time"></i> @sub.LastMessage.Lastdate<br>
+                                        <i class="glyphicon glyphicon-user"></i> @sub.LastMessage.lastAutor
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+<br>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <a class="panel-default" data-toggle="collapse" data-parent="#accordion" href="#visitor_stats">
+            <div class="panel-heading">
+                <i class="glyphicon glyphicon-stats"></i> Статистика посетителей <span class="pull-right"><i class="glyphicon glyphicon-resize-full"></i></span>
+            </div>
+        </a>
+        <div id="visitor_stats" class="panel-collapse collapse in">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <p><i class="glyphicon glyphicon-globe"></i> Рекорд пребывания за день: @Model.VisitMax.Count, это было  @Html.DisplayFor(Model => Model.VisitMax.Date)</p>
+                        <div class="hidden-xs">
+                            <em>
+                                @foreach (var el in Model.VisitMax.listVisitName)
+                                {<span>@el, </span>}
+                        </em>
+                    </div>
+                    <hr>
+                    <p><i class="glyphicon glyphicon-dashboard"></i> Всего посетителей за сегодня : @Model.VisitToday.Count</p>
+                    <div class="hidden-xs">
+                        <em>
+                            @foreach (var el in Model.VisitToday.listVisitName)
+                            {<span>@el, </span>}
+                        </em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
