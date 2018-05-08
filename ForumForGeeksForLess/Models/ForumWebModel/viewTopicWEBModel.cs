@@ -11,11 +11,11 @@ namespace ForumForGeeksForLess.Models.ForumWebModel
         public string Name { get; set; }
         public int Id { get; set; }
 
-        public List<messageInTheTopicWEB> SubsectionForum { get; set; }
+        public List<MessageInTheTopicWEB> SubsectionForum { get; set; }
 
         public viewTopicWEBModel()
         {
-            SubsectionForum = new List<messageInTheTopicWEB>();
+            SubsectionForum = new List<MessageInTheTopicWEB>();
         }
     }
 }

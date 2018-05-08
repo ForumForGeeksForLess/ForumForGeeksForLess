@@ -1,4 +1,4 @@
-namespace ForumForGeeksForLess.Models.DBModel
+namespace ForumForGeeksForLess.Models.ForumWebModel
 {
     using System;
     public partial class visitListWEB

@@ -21,19 +21,20 @@ namespace ForumForGeeksForLess.Models.ForumWebModel
             VisitMax = new VilsVisitWeb();
         }
     }
+    public class VilsVisitWeb
+    {
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy'-'MM'-'dd}", ApplyFormatInEditMode = true)]
+        public DateTime Date { get; set; }
+        public int Count { get; set; }
+        public List<string> listVisitName { get; set; }
+
+        public VilsVisitWeb()
+        {
+            listVisitName = new List<string>();
+        }
+    }
 }
 
-public class VilsVisitWeb
-{
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:yyyy'-'MM'-'dd}", ApplyFormatInEditMode = true)]
-    public DateTime Date { get; set; }
-    public int Count { get; set; }
-    public List<string> listVisitName { get; set; }
 
-    public VilsVisitWeb()
-    {
-        listVisitName = new List<string>();
-    }
- }
 

@@ -1,14 +1,14 @@
 ﻿using ForumForGeeksForLess.BL.interfaceDTO;
-using ForumForGeeksForLess.Models;
+using ForumForGeeksForLess.Models.ForumWebModel;
 using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 
 namespace ForumForGeeksForLess.Controllers
 {
-    public class ViewforumController : Controller
+    public class viewforumController : Controller
     {
         IRepositoryBL forumService;
-        public ViewforumController(IRepositoryBL serv)
+        public viewforumController(IRepositoryBL serv)
         {
             forumService = serv;
         }
@@ -31,7 +31,7 @@ namespace ForumForGeeksForLess.Controllers
             if (ModelState.IsValid)
             {
                 model.idIdent = User.Identity.GetUserId();
-                forumService.SaveTopic(model);
+                forumService.saveTopic(model);
                 return RedirectToAction("Index", new { id = model.idsubsectionForum });
             }
             return View(model);

@@ -1,4 +1,4 @@
-namespace ForumForGeeksForLess.Models.DBModel
+namespace ForumForGeeksForLess.Models.ForumWebModel
 {
 
     public partial class ratingListWEB

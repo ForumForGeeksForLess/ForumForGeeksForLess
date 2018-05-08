@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
-namespace ForumForGeeksForLess.Models
+
+namespace ForumForGeeksForLess.Models.ForumWebModel
 {
     public class ForCreateTopic
     {

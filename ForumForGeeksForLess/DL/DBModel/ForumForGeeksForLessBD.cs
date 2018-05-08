@@ -15,7 +15,7 @@ namespace ForumForGeeksForLess.Models.DBModel
             : base(connectionString)
         { }
 
-        public virtual DbSet<messageInTheTopic> MessageInTheTopic { get; set; }
+        public virtual DbSet<messageInTheTopic> messageInTheTopic { get; set; }
         public virtual DbSet<ratingList> ratingList { get; set; }
         public virtual DbSet<sectionForum> sectionForum { get; set; }
         public virtual DbSet<subsectionForum> subsectionForum { get; set; }

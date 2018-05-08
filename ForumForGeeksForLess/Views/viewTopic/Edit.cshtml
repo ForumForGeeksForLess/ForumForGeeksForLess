@@ -1,48 +1,43 @@
-﻿@model ForumForGeeksForLess.Models.DBModel.messageInTheTopicWEB
-
+﻿@model ForumForGeeksForLess.Models.ForumWebModel.MessageInTheTopicWEB
 @{
     ViewBag.Title = "Редактировать сообщение";
 }
-
 <h2>Редактировать сообщение</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(Model => Model.Id)
-    @Html.HiddenFor(Model => Model.idIdent)
-    @Html.HiddenFor(Model => Model.idtopicInTheForum)
-    <div class="form-group">
-        @Html.LabelFor(model => model.caption, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.caption, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.caption, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(Model => Model.Id)
+        @Html.HiddenFor(Model => Model.idIdent)
+        @Html.HiddenFor(Model => Model.idtopicInTheForum)
+        <div class="form-group">
+            @Html.LabelFor(model => model.caption, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.caption, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.caption, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.text, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.text, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-default" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.text, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.text, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.text, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Сохранить" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 <div>
     @Html.ActionLink("Вернуться", "Index", "viewTopic", new { id = Model.idtopicInTheForum }, null)
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

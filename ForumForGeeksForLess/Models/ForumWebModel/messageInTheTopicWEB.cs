@@ -1,17 +1,14 @@
-namespace ForumForGeeksForLess.Models.DBModel
-{
-    using System;
-    using System.ComponentModel.DataAnnotations;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-    public partial class messageInTheTopicWEB
+namespace ForumForGeeksForLess.Models.ForumWebModel
+{
+    public class MessageInTheTopicWEB
     {
-        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public int idtopicInTheForum { get; set; }
 
-        [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public string idIdent { get; set; }
 
         [DataType(DataType.MultilineText)]
@@ -19,6 +16,7 @@ namespace ForumForGeeksForLess.Models.DBModel
         [StringLength(500, MinimumLength = 3, ErrorMessage = "Длина сообщения должна быть в пределах 3 - 500 символов")]
         [Display(Name = "Сообщение:")]
         public string text { get; set; }
+
 
         [Required(ErrorMessage = "Заголовок не может быть пустым")]
         [StringLength(25, MinimumLength = 3, ErrorMessage = "Длина сообщения должна быть в пределах 3 - 25 символов")]

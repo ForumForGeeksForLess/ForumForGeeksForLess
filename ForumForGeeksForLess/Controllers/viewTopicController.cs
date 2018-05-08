@@ -1,15 +1,15 @@
 ﻿using ForumForGeeksForLess.BL.interfaceDTO;
-using ForumForGeeksForLess.Models.DBModel;
+using ForumForGeeksForLess.Models.ForumWebModel;
 using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 
 namespace ForumForGeeksForLess.Controllers
 {
-    public class ViewTopicController : Controller
+    public class viewTopicController : Controller
     {
 
         IRepositoryBL forumService;
-        public ViewTopicController(IRepositoryBL serv)
+        public viewTopicController(IRepositoryBL serv)
         {
             forumService = serv;
         }
@@ -22,18 +22,18 @@ namespace ForumForGeeksForLess.Controllers
         [Authorize]
         public ActionResult Create(int id)
         {
-            return View(new messageInTheTopicWEB { idtopicInTheForum = id});
+            return View(new MessageInTheTopicWEB { idtopicInTheForum = id});
         }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include= "idtopicInTheForum,text,caption")] messageInTheTopicWEB model)
+        public ActionResult Create([Bind(Include= "idtopicInTheForum,text,caption")] MessageInTheTopicWEB model)
         {
             if (ModelState.IsValid)
             {
                 model.idIdent = User.Identity.GetUserId();
-                forumService.SaveMessage(model);
+                forumService.saveMessage(model);
                 return RedirectToAction("Index", new { id = model.idtopicInTheForum });
             }
             return View(model);
@@ -52,12 +52,12 @@ namespace ForumForGeeksForLess.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,idIdent,idtopicInTheForum,text,caption")] messageInTheTopicWEB model)
+        public ActionResult Edit([Bind(Include = "Id,idIdent,idtopicInTheForum,text,caption")] MessageInTheTopicWEB model)
         {
             if (ModelState.IsValid)
             {
                 if (model.idIdent == User.Identity.GetUserId())
-                    forumService.EditMessage(model);
+                    forumService.editMessage(model);
                 return RedirectToAction("Index", new { id = model.idtopicInTheForum });
             }
             return View(model);
