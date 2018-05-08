@@ -1,7 +1,5 @@
 ﻿@model ForumForGeeksForLess.Models.ForumWebModel.viewTopicWEBModel
 @{
-    /**/
-
     ViewBag.Title = Model.Name;
 }
 
@@ -32,7 +30,7 @@
             <div class="panel-body thread-row">
                 <div class="row thread-row">
                     <div class="col-md-2 col-xs-3 text-center userblock">
-                        <img class="img-thumbnail" src="~/Content/images/Avatar.png" alt="Avatar">
+                        <img class="img-thumbnail" src="~/Content/@Html.DisplayFor(model =>model.ImagePath)" alt="Avatar">
                         <div class="label label-default">@el.idIdent</div>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-9">

@@ -10,12 +10,15 @@ namespace ForumForGeeksForLess.Models.ForumWebModel
     {
         public string Name { get; set; }
         public int Id { get; set; }
+        public string ImagePath { get; set; }
 
         public List<MessageInTheTopicWEB> SubsectionForum { get; set; }
 
         public viewTopicWEBModel()
         {
             SubsectionForum = new List<MessageInTheTopicWEB>();
+            ImagePath = "Images/Avatar.png";
+
         }
     }
 }
