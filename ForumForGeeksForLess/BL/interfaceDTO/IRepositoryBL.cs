@@ -14,8 +14,12 @@ namespace ForumForGeeksForLess.BL.interfaceDTO
        IndexWebModel GetAllSectionAndSub();
         viewForumModel GetViewForum(int i);
         viewTopicWEBModel GetMessageForun(int i);
+        messageInTheTopicWEB FindMessage(int i);
+
         void saveMessage(messageInTheTopicWEB mes);
         void saveTopic(ForCreateTopic top);
+        void editMessage(messageInTheTopicWEB mes);
+
         void SetVisirer(in string name);
         void Dispose();
     }

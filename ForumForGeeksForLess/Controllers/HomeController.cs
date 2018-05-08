@@ -1,10 +1,6 @@
-﻿
-using ForumForGeeksForLess.BL.interfaceDTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ForumForGeeksForLess.BL.interfaceDTO;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace ForumForGeeksForLess.Controllers
 {
@@ -16,15 +12,13 @@ namespace ForumForGeeksForLess.Controllers
             forumService = serv;
         }
 
+        [OutputCache(Duration = 30, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
                 forumService.SetVisirer(User.Identity.Name);
              return View(forumService.GetAllSectionAndSub());
         }
-
-
-
 
         protected override void Dispose(bool disposing)
         {

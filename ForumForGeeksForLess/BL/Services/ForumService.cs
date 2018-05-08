@@ -177,6 +177,23 @@ namespace ForumForGeeksForLess.BL.Services
             Database.MessageInTheTopics.Create(mesDL);
             Database.Save();
         }
+
+        public messageInTheTopicWEB FindMessage(int i)
+        {
+            var el = Database.MessageInTheTopics.Get(i);
+            return new messageInTheTopicWEB { Id = el.Id, caption = el.caption, idIdent = el.idIdent, text = el.text, idtopicInTheForum=el.idtopicInTheForum };
+        }
+
+        public void editMessage(messageInTheTopicWEB mes)
+        {
+            messageInTheTopic mesDL = Database.MessageInTheTopics.Get(mes.Id);
+
+            mesDL.date = DateTime.Now;
+            mesDL.caption = mes.caption;
+            mesDL.text = mes.text;
+            Database.MessageInTheTopics.Update(mesDL);
+            Database.Save();
+        }
     }
 }
 

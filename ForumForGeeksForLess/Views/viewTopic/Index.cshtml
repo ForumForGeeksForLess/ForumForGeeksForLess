@@ -41,6 +41,14 @@
                         <div class="content_body"><p>@el.text</p></div>
                     </div>
                 </div>
+                @if (Request.IsAuthenticated && User.Identity.Name==el.idIdent)
+                {
+                <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                    <br>
+                    @Html.ActionLink("Правка", "Edit", "viewTopic", new { id = el.Id }, new { @class = "btn btn-default" })
+                </div>
+                }
+
             </div>
             <br>
         </div>

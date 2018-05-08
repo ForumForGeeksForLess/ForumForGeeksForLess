@@ -202,12 +202,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="BL\DTO\messageInTheTopicDTO.cs" />
-    <Compile Include="BL\DTO\ratingListDTO.cs" />
-    <Compile Include="BL\DTO\sectionForumDTO.cs" />
-    <Compile Include="BL\DTO\subsectionForumDTO.cs" />
-    <Compile Include="BL\DTO\topicInTheForumDTO.cs" />
-    <Compile Include="BL\DTO\visitListDTO.cs" />
     <Compile Include="BL\interfaceDTO\IRepositoryBL.cs" />
     <Compile Include="BL\Services\ForumService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -320,6 +314,7 @@
     <Content Include="Views\viewTopic\Index.cshtml" />
     <Content Include="Views\viewTopic\Create.cshtml" />
     <Content Include="Views\viewforum\Create.cshtml" />
+    <Content Include="Views\viewTopic\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\" />

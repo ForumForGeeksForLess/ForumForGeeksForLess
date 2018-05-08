@@ -1,10 +1,6 @@
 ﻿using ForumForGeeksForLess.BL.interfaceDTO;
 using ForumForGeeksForLess.Models.DBModel;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ForumForGeeksForLess.Controllers
@@ -23,7 +19,7 @@ namespace ForumForGeeksForLess.Controllers
             return View(forumService.GetMessageForun(id));
         }
 
-
+        [Authorize]
         public ActionResult Create(int id)
         {
             return View(new messageInTheTopicWEB { idtopicInTheForum = id});
@@ -32,7 +28,7 @@ namespace ForumForGeeksForLess.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include= "idtopicInTheForum,Name,text,caption")] messageInTheTopicWEB model)
+        public ActionResult Create([Bind(Include= "idtopicInTheForum,text,caption")] messageInTheTopicWEB model)
         {
             if (ModelState.IsValid)
             {
@@ -43,6 +39,29 @@ namespace ForumForGeeksForLess.Controllers
             return View(model);
         }
 
+
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            var el = forumService.FindMessage(id);
+            if(el.idIdent!=User.Identity.GetUserId())
+                return RedirectToAction("Index", new { id = el.idtopicInTheForum });
+            return View(el);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,idIdent,idtopicInTheForum,text,caption")] messageInTheTopicWEB model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.idIdent == User.Identity.GetUserId())
+                    forumService.editMessage(model);
+                return RedirectToAction("Index", new { id = model.idtopicInTheForum });
+            }
+            return View(model);
+        }
 
 
 

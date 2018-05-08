@@ -10,7 +10,7 @@ namespace ForumForGeeksForLess.Models.DBModel
         public int idSectionForum { get; set; }
         public string Name { get; set; }
         public string Notes { get; set; }
-        [Display(Name = "Тем")]
+        [Display(Name = "Тема")]
         public int CountTopics { get; set; }
         [Display(Name = "Сообщений")]
         public int CountReplies { get; set; }
