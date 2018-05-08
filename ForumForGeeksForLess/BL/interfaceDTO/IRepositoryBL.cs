@@ -11,7 +11,12 @@ namespace ForumForGeeksForLess.BL.interfaceDTO
     public interface IRepositoryBL
     {
        IndexWebModel GetAllSectionAndSub();
-       void SetVisirer(in string name);
+
+        viewForumModel GetViewForum(int i);
+
+        viewTopicWEBModel GetMessageForun(int i);
+
+        void SetVisirer(in string name);
        void Dispose();
     }
 }

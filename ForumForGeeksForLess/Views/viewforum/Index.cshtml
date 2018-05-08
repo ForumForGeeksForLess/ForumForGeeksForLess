@@ -1,0 +1,48 @@
+﻿@model ForumForGeeksForLess.Models.ForumWebModel.viewForumModel
+@{
+    ViewBag.Title = @Model.Name;
+}
+
+<br>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">@Model.Name</div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="hidden-xs"></th>
+                        <th>@Html.DisplayNameFor(Model=> Model.SubsectionForum.FirstOrDefault().Name)</th>
+                        <th class="text-center">@Html.DisplayNameFor(Model => Model.SubsectionForum.FirstOrDefault().CountReplies)</th>
+                        <th class="hidden-xs">@Html.DisplayNameFor(Model => Model.SubsectionForum.FirstOrDefault().LastMessage)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var el in Model.SubsectionForum)
+                    {
+                        <tr>
+                            <td class="hidden-xs topic-marker">
+                                <a href="/viewTopic/Index/@el.Id">
+                                    <i class="glyphicon glyphicon-bullhorn"></i>
+                                </a>
+                            </td>
+                            <td class="col-md-7">
+                                <div><a href="/viewTopic/Index/@el.Id" title="@el.Name">@el.Name.&nbsp;</a></div>
+                                <small>@Html.DisplayNameFor(modelItem => el.idIdent): <em>@el.idIdent</em></small>
+                            </td>
+                            <td class="col-md-1 text-center"><span class="badge">@el.CountReplies</span></td>
+                            <td class="col-md-4 hidden-xs">
+                                <div>
+                                    @Html.DisplayNameFor(modelItem => el.LastMessage.Lastdate): @el.LastMessage.Lastdate<br>
+                                    <small>@Html.DisplayNameFor(modelItem => el.LastMessage.lastAutor): <em>@el.LastMessage.lastAutor</em></small>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

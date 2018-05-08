@@ -1,3 +1,6 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace ForumForGeeksForLess.Models.DBModel
 {
     using System;
@@ -6,10 +9,23 @@ namespace ForumForGeeksForLess.Models.DBModel
     {
        public int Id { get; set; }
        public int idsubsectionForum { get; set; }
+       [Display(Name = "Автор")]
        public string idIdent { get; set; }
+       [Display(Name = "Тема")]
        public string Name { get; set; }
-       public string Notes { get; set; }
-        public DateTime Date { get; set; }
-    
+       
+       public DateTime Date { get; set; }
+
+        [Display(Name = "Сообщений")]
+        public int CountReplies { get; set; }
+
+        [Display(Name = "Последнее сообщение")]
+        public LastMessage LastMessage { get; set; }
+
+        public topicInTheForumWEB()
+        {
+            LastMessage = new LastMessage();
+        }
+
     }
 }

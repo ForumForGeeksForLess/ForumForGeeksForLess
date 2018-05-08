@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ForumForGeeksForLess.BL.interfaceDTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,21 @@ namespace ForumForGeeksForLess.Controllers
 {
     public class viewTopicController : Controller
     {
-        // GET: viewTopic
+
+        IRepositoryBL forumService;
+        public viewTopicController(IRepositoryBL serv)
+        {
+            forumService = serv;
+        }
+    
         public ActionResult Index(int id)
         {
-            return View();
+            return View(forumService.GetMessageForun(id));
+        }
+        protected override void Dispose(bool disposing)
+        {
+            forumService.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

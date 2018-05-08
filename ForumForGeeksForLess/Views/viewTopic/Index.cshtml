@@ -1,0 +1,38 @@
+﻿@model ForumForGeeksForLess.Models.ForumWebModel.viewTopicWEBModel
+@{
+    ViewBag.Title = Model.Name;
+}
+
+
+<div class="row">
+    <div class="col-md-9 col-sm-9 col-xs-9">
+        <h4 class="text-truncated">@Model.Name.</h4>
+    </div>
+    <br>
+</div>
+
+@foreach (var el in Model.SubsectionForum)
+{
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="panel-title">
+                @el.caption
+            </div>
+        </div>
+        <div class="panel-body thread-row">
+            <div class="row thread-row">
+                <div class="col-md-2 col-xs-3 text-center userblock">
+                    <img class="img-thumbnail" src="~/Content/images/Avatar.png" alt="Avatar">
+                    <div class="label label-default">@el.idIdent</div>
+                </div>
+                <div class="col-md-5 col-sm-6 col-xs-9">
+                    <br>
+                    <div class="text-muted"><i class="glyphicon glyphicon-calendar"></i><small> @el.date</small></div>
+                    <div class="content_body"><p>@el.text</p></div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+}

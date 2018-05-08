@@ -243,6 +243,8 @@
     <Compile Include="Models\ForumWebModel\sectionForumWEB.cs" />
     <Compile Include="Models\ForumWebModel\subsectionForumWEB.cs" />
     <Compile Include="Models\ForumWebModel\topicInTheForumWEB.cs" />
+    <Compile Include="Models\ForumWebModel\viewForumModel.cs" />
+    <Compile Include="Models\ForumWebModel\viewTopicWEBModel.cs" />
     <Compile Include="Models\ForumWebModel\visitListWEB.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -313,10 +315,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmailNext.cshtml" />
     <Content Include="Views\Shared\settingNavbar.cshtml" />
+    <Content Include="Views\viewforum\Index.cshtml" />
+    <Content Include="Views\viewTopic\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\viewforum\" />
-    <Folder Include="Views\viewTopic\" />
+    <Folder Include="Content\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -28,7 +28,9 @@ namespace ForumForGeeksForLess.Models.DBModel
     public class LastMessage
     {
         public string lastCaption { get; set; }
+        [Display(Name = "Дата")]
         public DateTime? Lastdate { get; set; }
+        [Display(Name = "Автор")]
         public string lastAutor { get; set; }
         public int lastId { get; set; }
     }

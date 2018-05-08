@@ -58,7 +58,10 @@ namespace ForumForGeeksForLess.BL.Services
                             {
                                 tempList[i].LastMessage.lastAutor = bd.Users.Where(p => p.Id == temp.idIdent).Select(p => p.UserName).FirstOrDefault();
                             }
-                            tempList[i].LastMessage.lastId = temp.Id;
+
+
+
+                            tempList[i].LastMessage.lastId = temp.idtopicInTheForum;
                         }
                     }
 
@@ -96,6 +99,64 @@ namespace ForumForGeeksForLess.BL.Services
             if (!visitsList.Contains(name))
                 Database.VisitsList.Create(new visitList { user = name, date = DateTime.Now });
             Database.Save();
+        }
+
+
+
+        public viewForumModel GetViewForum(int id)
+        {
+            viewForumModel TopicInTheForumWEB = new viewForumModel();
+            TopicInTheForumWEB.Name = Database.SubsectionsForum.GetAll().Where(p => p.Id == id).Select(p => p.Name).FirstOrDefault();
+            var subsectionForum = Database.TopicsInTheForum.GetAll().Where(p => p.idsubsectionForum == id);
+            foreach (var el in subsectionForum)
+            {
+                string nameAutor;
+                using (ApplicationDbContext bd = new ApplicationDbContext())
+                {
+                    nameAutor = bd.Users.Where(p => p.Id == el.idIdent).Select(p => p.UserName).FirstOrDefault();
+                }
+                var tempMes = Database.MessageInTheTopics.GetAll().Where(p => p.idtopicInTheForum == el.Id).OrderByDescending(p=>p.date);
+                int countReplies = tempMes.Count();
+
+                var lastMes = tempMes.FirstOrDefault();
+                DateTime lasdate = lastMes.date;
+                string lasAutor = null;
+
+                if (countReplies > 0)
+                {
+                   
+                    using (ApplicationDbContext bd = new ApplicationDbContext())
+                    {
+                        lasAutor = bd.Users.Where(p => p.Id == lastMes.idIdent).Select(p => p.UserName).FirstOrDefault();
+                    }
+                }
+
+                TopicInTheForumWEB.SubsectionForum.Add(new topicInTheForumWEB { Id = el.Id, Date = el.Date, idIdent = nameAutor, Name = el.Name, idsubsectionForum = el.idsubsectionForum, CountReplies= countReplies, LastMessage = new LastMessage { Lastdate= lasdate, lastAutor= lasAutor } });
+            }
+            TopicInTheForumWEB.SubsectionForum = TopicInTheForumWEB.SubsectionForum.OrderByDescending(p => p.LastMessage.Lastdate).ToList();
+
+
+            return TopicInTheForumWEB;
+        }
+
+        public viewTopicWEBModel GetMessageForun(int id)
+        {
+            viewTopicWEBModel ViewTopicWEBModel = new viewTopicWEBModel();
+            ViewTopicWEBModel.Name = Database.TopicsInTheForum.GetAll().Where(p => p.Id == id).Select(p => p.Name).FirstOrDefault();
+            ViewTopicWEBModel.Id = id;
+
+            var mess = Database.MessageInTheTopics.GetAll().Where(p => p.idtopicInTheForum == id);
+            string Autor;
+            foreach (var el in mess)
+            {
+                Autor = null;
+                using (ApplicationDbContext bd = new ApplicationDbContext())
+                {
+                    Autor = bd.Users.Where(p => p.Id == el.idIdent).Select(p => p.UserName).FirstOrDefault();
+                }
+                ViewTopicWEBModel.SubsectionForum.Add(new messageInTheTopicWEB { Id = el.Id, date = el.date, caption = el.caption, text = el.text, idIdent= Autor});
+            }
+            return ViewTopicWEBModel;
         }
     }
 }

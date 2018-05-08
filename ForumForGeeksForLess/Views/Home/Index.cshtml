@@ -36,9 +36,7 @@
                                 <td class="text-center"><span class="badge">@sub.CountReplies</span></td>
                                 <td class="col-md-4 col-sm-4 hidden-xs">
                                     <div>
-                                        @*@Html.ActionLink(@sub.LastMessage.lastCaption, "Index", "viewTopic", new { id = @sub.LastMessage.lastId })*@
-
-                                        <a href="http://localhost:49917/viewTopic/Index/" @sub.LastMessage.lastId> @sub.LastMessage.lastCaption. </a><br>
+                                        <a href="/viewTopic/Index/@sub.LastMessage.lastId"> @sub.LastMessage.lastCaption. </a><br>
                                         <i class="glyphicon glyphicon-time"></i> @sub.LastMessage.Lastdate<br>
                                         <i class="glyphicon glyphicon-user"></i> @sub.LastMessage.lastAutor
                                     </div>
