@@ -16,7 +16,7 @@ namespace ForumForGeeksForLess.BL.Services
 {
     public class ForumService : IRepositoryBL
     {
-        IUnitOfWork Database { get; set; }
+        private IUnitOfWork Database { get; set; }
         public ForumService() => Database = new EFUnitOfWork();
 
     
@@ -106,6 +106,7 @@ namespace ForumForGeeksForLess.BL.Services
         public viewForumModel GetViewForum(int id)
         {
             viewForumModel TopicInTheForumWEB = new viewForumModel();
+            TopicInTheForumWEB.Id = id;
             TopicInTheForumWEB.Name = Database.SubsectionsForum.GetAll().Where(p => p.Id == id).Select(p => p.Name).FirstOrDefault();
             var subsectionForum = Database.TopicsInTheForum.GetAll().Where(p => p.idsubsectionForum == id);
             foreach (var el in subsectionForum)
@@ -157,6 +158,24 @@ namespace ForumForGeeksForLess.BL.Services
                 ViewTopicWEBModel.SubsectionForum.Add(new messageInTheTopicWEB { Id = el.Id, date = el.date, caption = el.caption, text = el.text, idIdent= Autor});
             }
             return ViewTopicWEBModel;
+        }
+
+        public void saveMessage(messageInTheTopicWEB mes)
+        {
+            messageInTheTopic mesDL = new messageInTheTopic { idIdent = mes.idIdent, date = DateTime.Now, idtopicInTheForum = mes.idtopicInTheForum, rating=0, caption = mes.caption, text=mes.text};
+
+            Database.MessageInTheTopics.Create(mesDL);
+            Database.Save();
+        }
+
+        public void saveTopic(ForCreateTopic top)
+        {
+            topicInTheForum tm = new topicInTheForum { Date = DateTime.Now, idIdent = top.idIdent, idsubsectionForum = top.idsubsectionForum, Name = top.Name, Notes = top.notes };
+            Database.TopicsInTheForum.Create(tm);
+            Database.Save();
+            messageInTheTopic mesDL = new messageInTheTopic { idIdent = top.idIdent, date = DateTime.Now, idtopicInTheForum = tm.Id, rating = 0, caption = top.caption, text = top.text };
+            Database.MessageInTheTopics.Create(mesDL);
+            Database.Save();
         }
     }
 }

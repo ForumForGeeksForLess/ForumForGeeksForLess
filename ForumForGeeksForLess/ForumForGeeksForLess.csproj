@@ -237,6 +237,7 @@
     <Compile Include="DL\DBModel\subsectionForum.cs" />
     <Compile Include="DL\DBModel\topicInTheForum.cs" />
     <Compile Include="DL\DBModel\visitList.cs" />
+    <Compile Include="Models\ForumWebModel\ForCreateTopic.cs" />
     <Compile Include="Models\ForumWebModel\IndexWebModel.cs" />
     <Compile Include="Models\ForumWebModel\messageInTheTopicWEB.cs" />
     <Compile Include="Models\ForumWebModel\ratingListWEB.cs" />
@@ -317,6 +318,8 @@
     <Content Include="Views\Shared\settingNavbar.cshtml" />
     <Content Include="Views\viewforum\Index.cshtml" />
     <Content Include="Views\viewTopic\Index.cshtml" />
+    <Content Include="Views\viewTopic\Create.cshtml" />
+    <Content Include="Views\viewforum\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\" />

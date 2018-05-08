@@ -4,7 +4,15 @@
 }
 
 <br>
-
+<div class="row">
+    @if (Request.IsAuthenticated)
+    {
+        <div class="col-xs-12 text-right">
+            @Html.ActionLink("Создать тему", "Create", "viewforum", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        </div>
+        <br>
+    }
+</div>
 
 <div class="row">
     <div class="col-md-12">
@@ -14,7 +22,7 @@
                 <thead>
                     <tr>
                         <th class="hidden-xs"></th>
-                        <th>@Html.DisplayNameFor(Model=> Model.SubsectionForum.FirstOrDefault().Name)</th>
+                        <th>@Html.DisplayNameFor(Model => Model.SubsectionForum.FirstOrDefault().Name)</th>
                         <th class="text-center">@Html.DisplayNameFor(Model => Model.SubsectionForum.FirstOrDefault().CountReplies)</th>
                         <th class="hidden-xs">@Html.DisplayNameFor(Model => Model.SubsectionForum.FirstOrDefault().LastMessage)</th>
                     </tr>

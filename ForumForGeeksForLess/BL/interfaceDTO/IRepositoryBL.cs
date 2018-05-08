@@ -1,4 +1,5 @@
-﻿using ForumForGeeksForLess.Models.DBModel;
+﻿using ForumForGeeksForLess.Models;
+using ForumForGeeksForLess.Models.DBModel;
 using ForumForGeeksForLess.Models.ForumWebModel;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,11 @@ namespace ForumForGeeksForLess.BL.interfaceDTO
     public interface IRepositoryBL
     {
        IndexWebModel GetAllSectionAndSub();
-
         viewForumModel GetViewForum(int i);
-
         viewTopicWEBModel GetMessageForun(int i);
-
+        void saveMessage(messageInTheTopicWEB mes);
+        void saveTopic(ForCreateTopic top);
         void SetVisirer(in string name);
-       void Dispose();
+        void Dispose();
     }
 }
