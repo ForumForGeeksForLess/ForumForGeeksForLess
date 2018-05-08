@@ -12,7 +12,7 @@ namespace ForumForGeeksForLess.Controllers
             forumService = serv;
         }
 
-        [OutputCache(Duration = 30, Location = OutputCacheLocation.Any)]
+        [OutputCache(Duration = 10, Location = OutputCacheLocation.Any)]
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
