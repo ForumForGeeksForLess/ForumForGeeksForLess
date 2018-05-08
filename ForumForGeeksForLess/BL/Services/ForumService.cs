@@ -105,9 +105,11 @@ namespace ForumForGeeksForLess.BL.Services
 
         public viewForumModel GetViewForum(int id)
         {
-            viewForumModel TopicInTheForumWEB = new viewForumModel();
-            TopicInTheForumWEB.Id = id;
-            TopicInTheForumWEB.Name = Database.SubsectionsForum.GetAll().Where(p => p.Id == id).Select(p => p.Name).FirstOrDefault();
+            viewForumModel TopicInTheForumWEB = new viewForumModel
+            {
+                Id = id,
+                Name = Database.SubsectionsForum.GetAll().Where(p => p.Id == id).Select(p => p.Name).FirstOrDefault()
+            };
             var subsectionForum = Database.TopicsInTheForum.GetAll().Where(p => p.idsubsectionForum == id);
             foreach (var el in subsectionForum)
             {
@@ -142,9 +144,11 @@ namespace ForumForGeeksForLess.BL.Services
 
         public viewTopicWEBModel GetMessageForun(int id)
         {
-            viewTopicWEBModel ViewTopicWEBModel = new viewTopicWEBModel();
-            ViewTopicWEBModel.Name = Database.TopicsInTheForum.GetAll().Where(p => p.Id == id).Select(p => p.Name).FirstOrDefault();
-            ViewTopicWEBModel.Id = id;
+            viewTopicWEBModel ViewTopicWEBModel = new viewTopicWEBModel
+            {
+                Name = Database.TopicsInTheForum.GetAll().Where(p => p.Id == id).Select(p => p.Name).FirstOrDefault(),
+                Id = id
+            };
 
             var mess = Database.MessageInTheTopics.GetAll().Where(p => p.idtopicInTheForum == id);
             string Autor;
@@ -160,7 +164,7 @@ namespace ForumForGeeksForLess.BL.Services
             return ViewTopicWEBModel;
         }
 
-        public void saveMessage(messageInTheTopicWEB mes)
+        public void SaveMessage(messageInTheTopicWEB mes)
         {
             messageInTheTopic mesDL = new messageInTheTopic { idIdent = mes.idIdent, date = DateTime.Now, idtopicInTheForum = mes.idtopicInTheForum, rating=0, caption = mes.caption, text=mes.text};
 
@@ -168,7 +172,7 @@ namespace ForumForGeeksForLess.BL.Services
             Database.Save();
         }
 
-        public void saveTopic(ForCreateTopic top)
+        public void SaveTopic(ForCreateTopic top)
         {
             topicInTheForum tm = new topicInTheForum { Date = DateTime.Now, idIdent = top.idIdent, idsubsectionForum = top.idsubsectionForum, Name = top.Name, Notes = top.notes };
             Database.TopicsInTheForum.Create(tm);
@@ -184,7 +188,7 @@ namespace ForumForGeeksForLess.BL.Services
             return new messageInTheTopicWEB { Id = el.Id, caption = el.caption, idIdent = el.idIdent, text = el.text, idtopicInTheForum=el.idtopicInTheForum };
         }
 
-        public void editMessage(messageInTheTopicWEB mes)
+        public void EditMessage(messageInTheTopicWEB mes)
         {
             messageInTheTopic mesDL = Database.MessageInTheTopics.Get(mes.Id);
 

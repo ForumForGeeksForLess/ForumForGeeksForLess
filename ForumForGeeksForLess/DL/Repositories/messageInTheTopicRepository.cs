@@ -18,17 +18,17 @@ namespace ForumForGeeksForLess.DL.Repositories
 
         public IEnumerable<messageInTheTopic> GetAll()
         {
-            return db.messageInTheTopic;
+            return db.MessageInTheTopic;
         }
 
         public messageInTheTopic Get(int id)
         {
-            return db.messageInTheTopic.Find(id);
+            return db.MessageInTheTopic.Find(id);
         }
 
         public void Create(messageInTheTopic item)
         {
-            db.messageInTheTopic.Add(item);
+            db.MessageInTheTopic.Add(item);
         }
 
         public void Update(messageInTheTopic item)
@@ -38,9 +38,9 @@ namespace ForumForGeeksForLess.DL.Repositories
 
         public async void Delete(int id)
         {
-            messageInTheTopic MessageInTheTopic = await db.messageInTheTopic.FindAsync(id);
+            messageInTheTopic MessageInTheTopic = await db.MessageInTheTopic.FindAsync(id);
             if (MessageInTheTopic != null)
-                db.messageInTheTopic.Remove(MessageInTheTopic);
+                db.MessageInTheTopic.Remove(MessageInTheTopic);
         }
     }
 }

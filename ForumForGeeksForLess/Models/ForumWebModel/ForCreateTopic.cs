@@ -17,11 +17,13 @@ namespace ForumForGeeksForLess.Models
         [Display(Name = "Название темы:")]
         public string Name { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Сообщение не может быть пустым")]
         [StringLength(75, MinimumLength = 3, ErrorMessage = "Длина темы должна быть в пределах 3 - 75 символов")]
         [Display(Name = "Примечание к теме:")]
         public string notes { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Сообщение не может быть пустым")]
         [StringLength(500, MinimumLength = 3, ErrorMessage = "Длина сообщения должна быть в пределах 3 - 500 символов")]
         [Display(Name = "Сообщение:")]

@@ -1,11 +1,6 @@
 ﻿using ForumForGeeksForLess.Models;
 using ForumForGeeksForLess.Models.DBModel;
 using ForumForGeeksForLess.Models.ForumWebModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForumForGeeksForLess.BL.interfaceDTO
 {
@@ -16,9 +11,9 @@ namespace ForumForGeeksForLess.BL.interfaceDTO
         viewTopicWEBModel GetMessageForun(int i);
         messageInTheTopicWEB FindMessage(int i);
 
-        void saveMessage(messageInTheTopicWEB mes);
-        void saveTopic(ForCreateTopic top);
-        void editMessage(messageInTheTopicWEB mes);
+        void SaveMessage(messageInTheTopicWEB mes);
+        void SaveTopic(ForCreateTopic top);
+        void EditMessage(messageInTheTopicWEB mes);
 
         void SetVisirer(in string name);
         void Dispose();

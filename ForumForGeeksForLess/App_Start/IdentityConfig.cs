@@ -21,18 +21,22 @@ namespace ForumForGeeksForLess
         {
             string from = "ForumForGeeksForLess@outlook.com";
             string pass= "GeeksForLess";
-         
-            SmtpClient client = new SmtpClient("smtp-mail.outlook.com", 587);
-            client.EnableSsl = true;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
 
-            client.Credentials = new System.Net.NetworkCredential(from, pass);
+            SmtpClient client = new SmtpClient("smtp-mail.outlook.com", 587)
+            {
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
 
-            var mail = new MailMessage(from, message.Destination);
-            mail.Subject = message.Subject;
-            mail.Body = message.Body;
-            mail.IsBodyHtml = true;
+                Credentials = new System.Net.NetworkCredential(from, pass)
+            };
+
+            var mail = new MailMessage(from, message.Destination)
+            {
+                Subject = message.Subject,
+                Body = message.Body,
+                IsBodyHtml = true
+            };
 
             return client.SendMailAsync(mail);
         }

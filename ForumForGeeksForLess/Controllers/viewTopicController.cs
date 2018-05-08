@@ -5,11 +5,11 @@ using System.Web.Mvc;
 
 namespace ForumForGeeksForLess.Controllers
 {
-    public class viewTopicController : Controller
+    public class ViewTopicController : Controller
     {
 
         IRepositoryBL forumService;
-        public viewTopicController(IRepositoryBL serv)
+        public ViewTopicController(IRepositoryBL serv)
         {
             forumService = serv;
         }
@@ -33,7 +33,7 @@ namespace ForumForGeeksForLess.Controllers
             if (ModelState.IsValid)
             {
                 model.idIdent = User.Identity.GetUserId();
-                forumService.saveMessage(model);
+                forumService.SaveMessage(model);
                 return RedirectToAction("Index", new { id = model.idtopicInTheForum });
             }
             return View(model);
@@ -57,7 +57,7 @@ namespace ForumForGeeksForLess.Controllers
             if (ModelState.IsValid)
             {
                 if (model.idIdent == User.Identity.GetUserId())
-                    forumService.editMessage(model);
+                    forumService.EditMessage(model);
                 return RedirectToAction("Index", new { id = model.idtopicInTheForum });
             }
             return View(model);

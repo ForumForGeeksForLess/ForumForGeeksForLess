@@ -5,10 +5,10 @@ using System.Web.Mvc;
 
 namespace ForumForGeeksForLess.Controllers
 {
-    public class viewforumController : Controller
+    public class ViewforumController : Controller
     {
         IRepositoryBL forumService;
-        public viewforumController(IRepositoryBL serv)
+        public ViewforumController(IRepositoryBL serv)
         {
             forumService = serv;
         }
@@ -31,7 +31,7 @@ namespace ForumForGeeksForLess.Controllers
             if (ModelState.IsValid)
             {
                 model.idIdent = User.Identity.GetUserId();
-                forumService.saveTopic(model);
+                forumService.SaveTopic(model);
                 return RedirectToAction("Index", new { id = model.idsubsectionForum });
             }
             return View(model);

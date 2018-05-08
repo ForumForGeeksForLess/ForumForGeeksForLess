@@ -14,6 +14,7 @@ namespace ForumForGeeksForLess.Models.DBModel
         [System.Web.Mvc.HiddenInput(DisplayValue = false)]
         public string idIdent { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Сообщение не может быть пустым")]
         [StringLength(500, MinimumLength = 3, ErrorMessage = "Длина сообщения должна быть в пределах 3 - 500 символов")]
         [Display(Name = "Сообщение:")]
